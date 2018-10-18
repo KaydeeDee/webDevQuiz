@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./public/styles/style.css">
+</head>
+<body>
+    <header>
+    </header>
+    <main>
+        <!-- user chooses track start -->
+        <form action="#" id="chooseTrackFrom">
+            <label for="easy">Easy</label>
+            <input type="radio" name="chooseTrack" id="easy" value="easy">
+
+            <label for="hard">Hard</label>
+            <input type="radio" name="chooseTrack" id="hard" value="hard">
+
+            <input type="submit" value="submit">
+        </form>
+        <!-- user chooses track end -->
+
+        <!-- single question displayed start -->
+        <div class="question" id="question"></div>
+        <!-- single question displayed end -->
+
+        <!-- three answer option display start -->
+        <form action="#" class="answers" id="answers">
+            <div id="answersContainer"></div>
+            <div id="buttonTesting"></div>
+            <!-- <input type="submit" value="submit" id="testing"> -->
+        </form>
+        <!-- three answer option display end -->
+    
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="./public/scripts/main.js"></script>
+</body>
+</html>
