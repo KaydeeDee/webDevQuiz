@@ -43,13 +43,15 @@ let questionTracks = {
     ]
 };
 
-// helper functions start
+// helper functions and variables start
 
     // random number generator
     const getRandomNumber = (number) => {
         return Math.floor(Math.random() * number);
     }
-
+    
+    // tally count
+    let tallyCorrect = 0;
 // helper functions end
 
 // get information from track form and form validation
@@ -62,10 +64,17 @@ const trackFormSubmit = (e) => {
         alert('please check something');
     } else {
         const chosenTrackArray = questionTracks[userTrackChoice];
-        pullQuestionChoices(chosenTrackArray)
+        createNewArray(chosenTrackArray)
         $('#chooseTrackFrom').hide();
     }
 };
+
+// create new array to avoid mutating the original
+const createNewArray = (chosenTrackArray) => {
+    const trackSpecificArray = [...chosenTrackArray];
+
+    pullQuestionChoices(trackSpecificArray)
+}
 
 // based off of user track choice pull q + as from that given track
 const pullQuestionChoices = (userChoice) => {
@@ -99,82 +108,56 @@ const displayToPage = (question, answers, correctA, userChoice, randomNumberForQ
         <input type="submit" value="submit" id="testing">
     </form>` );
 
+    checkAnswer(userChoice, randomNumberForQuestionOrder, correctA);
+}
 
-    // $('#question').html(`<p> ${question} </p>`);
-
-    // $('#answersContainer').html(answerIndv);
-
-    // $('#buttonTesting').html(`<input type="submit" value="submit" id="testing"></input>`);
+const checkAnswer = (userChoice, randomNumberForQuestionOrder, correctA) => {
 
     $('#answers').on('submit', function (e) {
         e.preventDefault();
 
         const userAnswer = $('input[name=answer]:checked').val();
 
-        console.log(userAnswer);
-
-        console.log(`correct answer: ${correctA}`);
-
         if (userAnswer === correctA) {
             alert('you did it!');
-            removeAskedQuestions(userChoice, randomNumberForQuestionOrder);
+            tallyCorrect = tallyCorrect + 1;
+            console.log(tallyCorrect);
+            removeAskedQuestions(userChoice, randomNumberForQuestionOrder, tallyCorrect);
         } else {
             alert('oh no, try again');
         }
 
     });
+
 }
 
-// const answerSubmit = (correctA, userChoice) => {
-
-//     $('#answers').on('submit', function(e) {
-//         e.preventDefault();
-
-//         const userAnswer = $('input[name=answer]:checked').val();
-
-//         console.log(userAnswer);
-
-//         console.log(`correct answer: ${correctA}`);
-
-//         if (userAnswer === correctA) {
-//             alert('you did it!');
-//             checkArrayLength(userChoice);
-//         } else {
-//             alert('oh no, try again');
-//         }
-
-//     });
-// }
-
-const removeAskedQuestions = (userChoice, randomNumberForQuestionOrder) => {
-
-    // create new array to avoid mutating original array
-    const trackSpecificArray = [...userChoice];
+const removeAskedQuestions = (userChoice, randomNumberForQuestionOrder, tallyCorrect) => {
 
     // remove question that was just displayed to avoid repetition
-    const filteredQuestions = trackSpecificArray.filter((questions, index) => {
+    const filteredTrack = userChoice.filter((questions, index) => {
         if (index !== randomNumberForQuestionOrder) {
             return true;
         }
     });
 
-    console.log(filteredQuestions);
-
-    checkArrayLength(filteredQuestions);
+    checkArrayLength(filteredTrack, tallyCorrect);
 
 }
 
 
 // check to see how many questions there are left
-const checkArrayLength = (array) => {
+const checkArrayLength = (array, tally) => {
     if (array.length > 0) {
         pullQuestionChoices(array);
     } else {
-        alert('no more questions left');
+        trackCompleted(tally);
     }
 }
 
-
+const trackCompleted = (tally) => {
+    alert('you\'re all done!');
+    console.log(tally);
+}
 
 
 $(function() {

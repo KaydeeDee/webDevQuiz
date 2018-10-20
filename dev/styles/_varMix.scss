@@ -1,0 +1,16 @@
+body {
+    font-size: 62.5%;
+}
+
+// mixins
+    // center
+        @mixin flexCenterPerfect {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @mixin flexHorz {
+            display: flex;
+            flex-direction: column;
+        }

@@ -1,0 +1,22 @@
+.chooseTrack {
+    @include flexCenterPerfect;
+    flex-direction: column;
+}
+
+.chooseTrack--form {
+    width: 600px;
+
+    input[type=submit] {
+        display: block;
+    }
+
+    input[type='radio'] {
+        width: 200px;
+    }
+
+    input[type='radio']:checked + label {
+        color: red;
+        border: 1px solid purple;
+        padding: 4px;
+    }
+}

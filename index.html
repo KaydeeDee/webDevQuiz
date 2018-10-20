@@ -10,18 +10,24 @@
 </head>
 <body>
     <header>
+        <h1>Web Dev Game</h1>
     </header>
     <main>
         <!-- user chooses track start -->
-        <form action="#" id="chooseTrackFrom">
-            <label for="easy">Easy</label>
-            <input type="radio" name="chooseTrack" id="easy" value="easy">
+        <section id="chooseTrack" class="chooseTrack">
+            <h2>Choose a difficulty level</h2>
+            <form action="#" id="chooseTrackFrom" class="chooseTrack--form">
+                <div>
+                    <input type="radio" name="chooseTrack" id="easy" value="easy">
+                    <label for="easy">Easy</label>
+                    
+                    <input type="radio" name="chooseTrack" id="hard" value="hard">
+                    <label for="hard">Hard</label>
+                </div>
 
-            <label for="hard">Hard</label>
-            <input type="radio" name="chooseTrack" id="hard" value="hard">
-
-            <input type="submit" value="submit">
-        </form>
+                <input type="submit" value="submit">
+            </form>
+        </section>
         <!-- user chooses track end -->
 
         <!-- single question displayed start -->
