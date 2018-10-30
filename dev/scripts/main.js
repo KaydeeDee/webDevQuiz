@@ -2,22 +2,31 @@
 let questionTracks = {
     easy: [
         {
-            question: 'EASY: testing first question',
+            question: 'What do a span and a div have in common?',
             answers: [
-                'EASY: testing first answer',
-                'ANSWER EASY: testing first answer',
-                'EASY: testing first answer'
+                'They are both block elements',
+                'They are both non-semantic elements',
+                'They have nothing in common!'
             ],
-            correctAnswer: 'ANSWER EASY: testing first answer'
+            correctAnswer: 'They are both non-semantic elements'
         },
         {
-            question: 'EASY: testing second question',
+            question: 'Which of the following is considered an obsolete element?',
             answers: [
-                'ANSWER EASY: testing second answer',
-                'EASY: testing second answer',
-                'EASY: testing second answer'
+                `b`,
+                `em`,
+                `strong`
             ],
-            correctAnswer: 'ANSWER EASY: testing second answer'
+            correctAnswer: `b`
+        },
+        {
+            question: 'Which semantic element represents the navigation?',
+            answers: [
+                `footer`,
+                `main`,
+                `nav`
+            ],
+            correctAnswer: `nav`
         }
     ],
 
@@ -96,15 +105,14 @@ const pullQuestionChoices = (userChoice) => {
 const displayToPage = (question, answers, correctA, userChoice, randomNumberForQuestionOrder) => {
 
     const answerIndv = answers.map((indvAnswer, index) => {
-        return `<label for="${index}">${indvAnswer}</label>
-        <input type="radio" value="${indvAnswer}" name="answer" id=${index}>`
+        return `<div>
+        <input type="radio" value="${indvAnswer}" name="answer" id=${index}><label for="${index}">${indvAnswer}</label></div>`
     });
 
     $('body').html(`
-    <p> ${question} </p>
+    <p class="question"> ${question} </p>
     <form action="#" class="answers" id="answers">
-        <div>${answerIndv}</div>
-        <div id="buttonTesting"></div>
+        ${answerIndv}
         <input type="submit" value="submit" id="testing">
     </form>` );
 
@@ -121,7 +129,6 @@ const checkAnswer = (userChoice, randomNumberForQuestionOrder, correctA) => {
         if (userAnswer === correctA) {
             alert('you did it!');
             tallyCorrect = tallyCorrect + 1;
-            console.log(tallyCorrect);
             removeAskedQuestions(userChoice, randomNumberForQuestionOrder, tallyCorrect);
         } else {
             alert('oh no, try again');

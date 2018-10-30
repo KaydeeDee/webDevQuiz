@@ -6,43 +6,56 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Anonymous+Pro" rel="stylesheet">
     <link rel="stylesheet" href="./public/styles/style.css">
 </head>
-<body>
-    <header>
-        <h1>Web Dev Game</h1>
-    </header>
-    <main>
-        <!-- user chooses track start -->
-        <section id="chooseTrack" class="chooseTrack">
-            <h2>Choose a difficulty level</h2>
-            <form action="#" id="chooseTrackFrom" class="chooseTrack--form">
-                <div>
-                    <input type="radio" name="chooseTrack" id="easy" value="easy">
-                    <label for="easy">Easy</label>
-                    
-                    <input type="radio" name="chooseTrack" id="hard" value="hard">
-                    <label for="hard">Hard</label>
-                </div>
+<body class="maxWrapper">
+    <div class="completeTerminalWindow innerWrapper">
+        <div class="terminal-topBar">
+            <span class="red"></span>
+            <span class="yellow"></span>
+            <span class="green"></span>
+            <!-- <i class="fas fa-home"></i> -->
+        </div>
+        <header>
+            <h1 class="typingEffect">Web Dev Game</h1>
+        </header>
+        <main>
+            <!-- user chooses track start -->
+            <section id="chooseTrack" class="chooseTrack">
+                <h2>Choose a difficulty level</h2>
+                <form action="#" id="chooseTrackFrom" class="chooseTrack--form">
+                    <div>
+                        <div>
+                            <input type="radio" name="chooseTrack" id="easy" value="easy">
+                            <label for="easy">Easy</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="chooseTrack" id="hard" value="hard">
+                            <label for="hard">Hard</label>
+                        </div>
+                    </div>
 
-                <input type="submit" value="submit">
+                    <input type="submit" value="submit">
+                </form>
+            </section>
+            <!-- user chooses track end -->
+
+            <!-- single question displayed start -->
+            <div class="question" id="question"></div>
+            <!-- single question displayed end -->
+
+            <!-- three answer option display start -->
+            <form action="#" class="answers" id="answers">
+                <div id="answersContainer"></div>
+                <div id="buttonTesting"></div>
             </form>
-        </section>
-        <!-- user chooses track end -->
-
-        <!-- single question displayed start -->
-        <div class="question" id="question"></div>
-        <!-- single question displayed end -->
-
-        <!-- three answer option display start -->
-        <form action="#" class="answers" id="answers">
-            <div id="answersContainer"></div>
-            <div id="buttonTesting"></div>
-            <!-- <input type="submit" value="submit" id="testing"> -->
-        </form>
-        <!-- three answer option display end -->
-    
-    </main>
+            <!-- three answer option display end -->
+        
+        </main>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>

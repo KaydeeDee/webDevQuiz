@@ -1,17 +1,20 @@
 .chooseTrack {
-    @include flexCenterPerfect;
     flex-direction: column;
+
 }
 
 .chooseTrack--form {
-    width: 600px;
+    width: 800px;
+    @include flexHorz;
 
-    input[type=submit] {
-        display: block;
+    > div {
+        display: flex;
+        justify-content: space-around;
     }
 
-    input[type='radio'] {
+    input[type=submit] {
         width: 200px;
+        align-self: center;
     }
 
     input[type='radio']:checked + label {
