@@ -27,27 +27,63 @@ let questionTracks = {
                 `nav`
             ],
             correctAnswer: `nav`
+        },
+        {
+            question: 'Which file can be used to write CSS from the given options?',
+            answers: [
+                `website.css`,
+                `website.js`,
+                `website.html`
+            ],
+            correctAnswer: `website.css`
+        },
+        {
+            question: 'What HTML tag is used to create a numbered list?',
+            answers: [
+                `list`,
+                `ol`,
+                `ul`
+            ],
+            correctAnswer: `ol`
+        },
+        {
+            question: 'Which of the following is an invalid background-color porperty?',
+            answers: [
+                `blue`,
+                `rgba(288,72, 18, 0.3)`,
+                `81`
+            ],
+            correctAnswer: `81`
         }
     ],
 
     hard: [
         {
-            question: 'HARD: testing first question',
+            question: 'Which of the follow gives the top-right border a border radius of 6px?',
             answers: [
-                'HARD: testing first answer',
-                'ANSWER HARD: testing first answer',
-                'HARD: testing first answer'
+                'border-radius: 6px 10px 2px 8px',
+                'border-radius: 20px 6px 4px 16px',
+                'border-radius: 9px 14px 2px 6px'
             ],
-            correctAnswer: 'ANSWER HARD: testing first answer'
+            correctAnswer: 'border-radius: 20px 6px 4px 16px'
         },
         {
-            question: 'HARD: testing second question',
+            question: 'Which is better to use when laying out your applications?',
             answers: [
-                'ANSWER HARD: testing second answer',
-                'HARD: testing second answer',
-                'HARD: testing second answer'
+                'Flexbox',
+                'CSSGrid',
+                'Neither - they both have their use cases'
             ],
-            correctAnswer: 'ANSWER HARD: testing second answer'
+            correctAnswer: 'Neither - they both have their use cases'
+        },
+        {
+            question: 'what do cows do?',
+            answers: [
+                'moo',
+                'dark',
+                'meow'
+            ],
+            correctAnswer: 'moo'
         }
     ]
 };
@@ -161,6 +197,7 @@ const checkArrayLength = (array, tally) => {
     }
 }
 
+// end of quiz, tally count for correct responses
 const trackCompleted = (tally) => {
     alert('you\'re all done!');
     console.log(tally);

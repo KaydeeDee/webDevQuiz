@@ -4,16 +4,16 @@
 }
 
 .chooseTrack--form {
-    width: 800px;
+    width: 200px;
     @include flexHorz;
 
     > div {
         display: flex;
         justify-content: space-around;
+        margin: 10px 0;
     }
 
     input[type=submit] {
-        width: 200px;
         align-self: center;
     }
 

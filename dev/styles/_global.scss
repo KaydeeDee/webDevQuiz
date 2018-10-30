@@ -99,6 +99,8 @@ section {
 
 .question {
     color: black;
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 .answers {
@@ -111,6 +113,7 @@ section {
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-bottom: 5px;
     }
 
     #id {
