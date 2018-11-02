@@ -109,8 +109,9 @@ const trackFormSubmit = (e) => {
         alert('please check something');
     } else {
         const chosenTrackArray = questionTracks[userTrackChoice];
-        createNewArray(chosenTrackArray)
-        $('#chooseTrackFrom').hide();
+        createNewArray(chosenTrackArray);
+        $('#chooseTrack').hide();
+        $('#questionsOnTrack').show();
     }
 };
 
@@ -142,11 +143,15 @@ const displayToPage = (question, answers, correctA, userChoice, randomNumberForQ
 
     const answerIndv = answers.map((indvAnswer, index) => {
         return `<div>
-        <input type="radio" value="${indvAnswer}" name="answer" id=${index}><label for="${index}">${indvAnswer}</label></div>`
-    });
+        <input type="radio" value="${indvAnswer}" name="answer" id=${index}><label for="${index}">${indvAnswer}</label></div>`;
+        // return indvAnswer, index
+    }).join(' ');
 
-    $('body').html(`
-    <p class="question"> ${question} </p>
+    // const removeArrayComma = answerIndv.join(' ');
+    console.log(answerIndv);
+
+    $('.questionsOnTrack').html(`
+    <h2 class="question"> ${question} </h2>
     <form action="#" class="answers" id="answers">
         ${answerIndv}
         <input type="submit" value="submit" id="testing">

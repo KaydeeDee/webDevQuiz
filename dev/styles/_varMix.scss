@@ -3,14 +3,24 @@ html {
 }
 
 // mixins
-    // center
-        @mixin flexCenterPerfect {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+    //px to rem
+        @mixin fSize-value($sizeValue){
+            font-size: $sizeValue * 1px;
+            font-size: ($sizeValue/10) * 1rem;
         }
 
-        @mixin flexHorz {
-            display: flex;
-            flex-direction: column;
-        }
+    //flex
+        // center
+            @mixin flexCenterPerfect {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+        // row
+            @mixin flexHorz {
+                display: flex;
+                flex-direction: column;
+            }
+    
+    

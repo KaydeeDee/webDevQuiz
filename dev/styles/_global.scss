@@ -1,23 +1,36 @@
+// font-size base
+html {
+    font-size: 62.5%;
+}
+
 // resets
 h1, h2, p {
     padding: 0;
     margin: 0;
 }
 
+// base styles
 body {
     color: white;
     font-family: 'Anonymous Pro', monospace;
+    @include fSize-value(25);
+}
+
+h2 {
+    @include fSize-value(30);
+    text-align: center;
+    // font-size: 1.7vw;
+}
+
+section {
+    @include flexCenterPerfect;
+    min-height: 55vh;
 }
 
 
 // "remove" radio button
-// input[type='radio'] {
-//     visibility: hidden;
-// }
-
-section {
-    @include flexCenterPerfect;
-    // min-height: 100vh;
+input[type='radio'] {
+    display: none;
 }
 
 .maxWrapper {
@@ -39,6 +52,7 @@ section {
     position: absolute;
     top: 50%;
     left: 50%;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
 .terminal-topBar {
@@ -67,56 +81,4 @@ section {
         .green {
             background: green;
         }
-}
-
-.typingEffect {
-    letter-spacing: 2px;
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 10px solid orange;
-    animation:
-        typing 3.5s steps(30, end),
-        blinking 1s ease 0s infinite normal forwards;
-        // fadeOut 0.2s ease infinite;
-}
-
-/* The typing effect */
-@keyframes typing {
-  from { width: 0}
-  to { width: 100% }
-}
-
-/* The typewriter cursor effect */
-@keyframes blinking {
-  from, to { border-color: transparent }
-  50% { border-color: orange }
-}
-
-@keyframes fadeOut {
-    from {border-color: orange}
-    to {border-color: transparent}
-}
-
-.question {
-    color: black;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.answers {
-    color: black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    > div {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 5px;
-    }
-
-    #id {
-        text-align: center;
-    }
 }

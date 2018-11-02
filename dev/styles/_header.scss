@@ -1,4 +1,9 @@
 header {
-    padding: 8px;
-    display: inline-block;
+    padding: 24px 0;
+    @include flexCenterPerfect;
+
+        h1 {
+            font-size: 4vw;
+            letter-spacing: 3px;
+        }
 }

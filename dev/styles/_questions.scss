@@ -1,0 +1,26 @@
+.questionsOnTrack {
+    display: none;
+    flex-direction: column;
+}
+
+.question {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.answers {
+    width: 80%;
+    @include flexHorz;
+    align-items: center;
+
+    > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+
+    #id {
+        text-align: center;
+    }
+}
