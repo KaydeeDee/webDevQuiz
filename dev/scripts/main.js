@@ -4,56 +4,56 @@ let questionTracks = {
         {
             question: 'What do a span and a div have in common?',
             answers: [
-                'They are both block elements',
-                'They are both non-semantic elements',
-                'They have nothing in common!'
+                '1) They are both block elements',
+                '2) They are both non-semantic elements',
+                '3) They have nothing in common!'
             ],
-            correctAnswer: 'They are both non-semantic elements'
+            correctAnswer: '2) They are both non-semantic elements'
         },
         {
             question: 'Which of the following is considered an obsolete element?',
             answers: [
-                `b`,
-                `em`,
-                `strong`
+                `<xmp>1) <b></xmp>`,
+                `<xmp>2) <em></xmp>`,
+                `<xmp>3) <strong></xmp>`
             ],
-            correctAnswer: `b`
+            correctAnswer: `<xmp>1) <b></xmp>`
         },
         {
             question: 'Which semantic element represents the navigation?',
             answers: [
-                `footer`,
-                `main`,
-                `nav`
+                `<xmp>1) <footer></xmp>`,
+                `<xmp>2) <main></xmp>`,
+                `<xmp>3) <nav></xmp>`
             ],
-            correctAnswer: `nav`
+            correctAnswer: `<xmp>3) <nav></xmp>`
         },
         {
             question: 'Which file can be used to write CSS from the given options?',
             answers: [
-                `website.css`,
-                `website.js`,
-                `website.html`
+                `1) website.css`,
+                `2) website.js`,
+                `3) website.html`
             ],
-            correctAnswer: `website.css`
+            correctAnswer: `1) website.css`
         },
         {
-            question: 'What HTML tag is used to create a numbered list?',
+            question: 'What HTML element is used to create a numbered list?',
             answers: [
-                `list`,
-                `ol`,
-                `ul`
+                `1) list`,
+                `2) ol`,
+                `3) ul`
             ],
-            correctAnswer: `ol`
+            correctAnswer: `2) ol`
         },
         {
             question: 'Which of the following is an invalid background-color porperty?',
             answers: [
-                `blue`,
-                `rgba(288,72, 18, 0.3)`,
-                `81`
+                `1) blue`,
+                `2) rgba(288,72,18,0.3)`,
+                `3) 81`
             ],
-            correctAnswer: `81`
+            correctAnswer: `3) 81`
         }
     ],
 
@@ -61,29 +61,29 @@ let questionTracks = {
         {
             question: 'Which of the follow gives the top-right border a border radius of 6px?',
             answers: [
-                'border-radius: 6px 10px 2px 8px',
-                'border-radius: 20px 6px 4px 16px',
-                'border-radius: 9px 14px 2px 6px'
+                '1) border-radius: 6px 10px 2px 8px',
+                '2) border-radius: 20px 6px 4px 16px',
+                '3) border-radius: 9px 14px 2px 6px'
             ],
-            correctAnswer: 'border-radius: 20px 6px 4px 16px'
+            correctAnswer: '2) border-radius: 20px 6px 4px 16px'
         },
         {
             question: 'Which is better to use when laying out your applications?',
             answers: [
-                'Flexbox',
-                'CSSGrid',
-                'Neither - they both have their use cases'
+                '1) Flexbox',
+                '2) CSSGrid',
+                '3) Neither - they both have their use cases'
             ],
-            correctAnswer: 'Neither - they both have their use cases'
+            correctAnswer: '3) Neither - they both have their use cases'
         },
         {
             question: 'what do cows do?',
             answers: [
-                'moo',
-                'dark',
-                'meow'
+                '1) moo',
+                '2) bark',
+                '3) meow'
             ],
-            correctAnswer: 'moo'
+            correctAnswer: '1) moo'
         }
     ]
 };
@@ -142,18 +142,16 @@ const pullQuestionChoices = (userChoice) => {
 const displayToPage = (question, answers, correctA, userChoice, randomNumberForQuestionOrder) => {
 
     const answerIndv = answers.map((indvAnswer, index) => {
-        return `<div>
+        return `<div class="indvQuestion">
         <input type="radio" value="${indvAnswer}" name="answer" id=${index}><label for="${index}">${indvAnswer}</label></div>`;
-        // return indvAnswer, index
     }).join(' ');
-
-    // const removeArrayComma = answerIndv.join(' ');
-    console.log(answerIndv);
 
     $('.questionsOnTrack').html(`
     <h2 class="question"> ${question} </h2>
     <form action="#" class="answers" id="answers">
-        ${answerIndv}
+        <div>
+            ${answerIndv}
+        </div>
         <input type="submit" value="submit" id="testing">
     </form>` );
 
@@ -172,7 +170,8 @@ const checkAnswer = (userChoice, randomNumberForQuestionOrder, correctA) => {
             tallyCorrect = tallyCorrect + 1;
             removeAskedQuestions(userChoice, randomNumberForQuestionOrder, tallyCorrect);
         } else {
-            alert('oh no, try again');
+            alert('oh no, you didn\'t get this one right!');
+            removeAskedQuestions(userChoice, randomNumberForQuestionOrder, tallyCorrect);
         }
 
     });
@@ -204,12 +203,12 @@ const checkArrayLength = (array, tally) => {
 
 // end of quiz, tally count for correct responses
 const trackCompleted = (tally) => {
-    alert('you\'re all done!');
-    console.log(tally);
+    $('#questionsOnTrack').hide();
+    $('#finalScreen').show();
+    $('#finalTally').html(`You got ${tally} questions correct! WOOHOO!`);
 }
 
 
 $(function() {
-    // console.log('ready');
     $('#chooseTrackFrom').on('submit', trackFormSubmit);
 });

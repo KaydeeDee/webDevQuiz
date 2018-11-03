@@ -13,16 +13,6 @@
         margin: 6vw 0;
     }
 
-    input[type=submit] {
-        align-self: center;
-    }
-
-    input[type='radio']:checked + label {
-        color: red;
-        border: 1px solid purple;
-        padding: 4px;
-    }
-
     .chooseTrack--singleButtonGrouping {
         width: 50%;
         text-align: center;
