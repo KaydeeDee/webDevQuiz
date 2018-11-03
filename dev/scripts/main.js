@@ -1,3 +1,5 @@
+//this application is not responsive yet, but will be in the future! I'm in the process of adding more quesiton to each track, so this isn't complete yet, but the logic is all there for the app to run!
+
 // holds both question difficulty tracks
 let questionTracks = {
     easy: [
@@ -77,13 +79,22 @@ let questionTracks = {
             correctAnswer: '3) Neither - they both have their use cases'
         },
         {
-            question: 'what do cows do?',
+            question: 'What\'s the difference between .map and .forEach?',
             answers: [
-                '1) moo',
-                '2) bark',
-                '3) meow'
+                '1) They\'re exactly the same',
+                '2) One returns a new array, the other does not',
+                '3) Who knows, JavaScript is wild'
             ],
-            correctAnswer: '1) moo'
+            correctAnswer: '2) One returns a new array, the other does not'
+        },
+        {
+            question: 'When should :focus be applied to an element?',
+            answers: [
+                '1) Whenever an element gets a hover effect',
+                '2) It\'s largely unnecessary and can be removed',
+                '3) None of the above'
+            ],
+            correctAnswer: '1) Whenever an element gets a hover effect'
         }
     ]
 };
@@ -143,7 +154,7 @@ const displayToPage = (question, answers, correctA, userChoice, randomNumberForQ
 
     const answerIndv = answers.map((indvAnswer, index) => {
         return `<div class="indvQuestion">
-        <input type="radio" value="${indvAnswer}" name="answer" id=${index}><label for="${index}">${indvAnswer}</label></div>`;
+        <input type="radio" value="${indvAnswer}" name="answer" id=${index}><label for="${index}" tabindex="0" name="answer">${indvAnswer}</label></div>`;
     }).join(' ');
 
     $('.questionsOnTrack').html(`
@@ -169,6 +180,8 @@ const checkAnswer = (userChoice, randomNumberForQuestionOrder, correctA) => {
             alert('you did it!');
             tallyCorrect = tallyCorrect + 1;
             removeAskedQuestions(userChoice, randomNumberForQuestionOrder, tallyCorrect);
+        } else if (!userAnswer) {
+            alert('Please choose an answer!');
         } else {
             alert('oh no, you didn\'t get this one right!');
             removeAskedQuestions(userChoice, randomNumberForQuestionOrder, tallyCorrect);

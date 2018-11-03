@@ -8,6 +8,8 @@
     width: 80%;
     @include flexHorz;
     align-items: center;
+    text-align: center;
+    padding: 0 10px;
 
     > div {
         margin: 4vw 0 3vw;
